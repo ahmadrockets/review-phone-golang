@@ -1,0 +1,980 @@
+definitions:
+  controllers.ChangePasswordInput:
+    properties:
+      newPassword:
+        type: string
+      oldPassword:
+        type: string
+      username:
+        type: string
+    required:
+    - newPassword
+    - oldPassword
+    - username
+    type: object
+  controllers.LoginInput:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    required:
+    - password
+    - username
+    type: object
+  controllers.RegisterInput:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+      username:
+        type: string
+    required:
+    - email
+    - password
+    - username
+    type: object
+  controllers.brandInput:
+    properties:
+      name:
+        type: string
+    type: object
+  controllers.phoneInput:
+    properties:
+      battery_charging:
+        type: string
+      battery_type:
+        type: string
+      body_dimensions:
+        type: string
+      body_sim:
+        type: string
+      body_weight:
+        type: string
+      brandID:
+        type: integer
+      comms_bluetooth:
+        type: string
+      comms_gps:
+        type: string
+      comms_infrared:
+        type: string
+      comms_nfc:
+        type: string
+      comms_radio:
+        type: string
+      comms_usb:
+        type: string
+      comms_wlan:
+        type: string
+      display_protection:
+        type: string
+      display_resolution:
+        type: string
+      display_size:
+        type: string
+      display_type:
+        type: string
+      features_sensor:
+        type: string
+      launch_announce:
+        type: string
+      launch_status:
+        type: string
+      maincam_dual:
+        type: string
+      maincam_features:
+        type: string
+      maincam_video:
+        type: string
+      memory_cardslot:
+        type: string
+      memory_internal:
+        type: string
+      misc_color:
+        type: string
+      misc_price:
+        type: string
+      name:
+        type: string
+      network_technology:
+        type: string
+      picture_cover:
+        type: string
+      platform_cpu:
+        type: string
+      platform_gpu:
+        type: string
+      platform_os:
+        type: string
+      selfcam_features:
+        type: string
+      selfcam_single:
+        type: string
+      selfcam_video:
+        type: string
+      sound_jack:
+        type: string
+      sound_loudspeaker:
+        type: string
+    type: object
+  controllers.pictureInput:
+    properties:
+      phoneID:
+        type: integer
+      title:
+        type: string
+      urlPicture:
+        type: string
+    type: object
+  controllers.reviewInput:
+    properties:
+      content:
+        type: string
+      phoneID:
+        type: integer
+      picture:
+        type: string
+      title:
+        type: string
+      userID:
+        type: integer
+    type: object
+  controllers.roleInput:
+    properties:
+      can_write:
+        type: boolean
+      name:
+        type: string
+    type: object
+  models.Brand:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  models.Opinion:
+    properties:
+      content:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      nickname:
+        type: string
+      phoneID:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  models.Phone:
+    properties:
+      battery_charging:
+        type: string
+      battery_type:
+        type: string
+      body_dimensions:
+        type: string
+      body_sim:
+        type: string
+      body_weight:
+        type: string
+      brand:
+        $ref: '#/definitions/models.Brand'
+      brandID:
+        type: integer
+      comms_bluetooth:
+        type: string
+      comms_gps:
+        type: string
+      comms_infrared:
+        type: string
+      comms_nfc:
+        type: string
+      comms_radio:
+        type: string
+      comms_usb:
+        type: string
+      comms_wlan:
+        type: string
+      created_at:
+        type: string
+      display_protection:
+        type: string
+      display_resolution:
+        type: string
+      display_size:
+        type: string
+      display_type:
+        type: string
+      features_sensor:
+        type: string
+      hits:
+        type: integer
+      id:
+        type: integer
+      launch_announce:
+        type: string
+      launch_status:
+        type: string
+      maincam_dual:
+        type: string
+      maincam_features:
+        type: string
+      maincam_video:
+        type: string
+      memory_cardslot:
+        type: string
+      memory_internal:
+        type: string
+      misc_color:
+        type: string
+      misc_price:
+        type: string
+      name:
+        type: string
+      network_technology:
+        type: string
+      opinions:
+        items:
+          $ref: '#/definitions/models.Opinion'
+        type: array
+      picture_cover:
+        type: string
+      pictures:
+        items:
+          $ref: '#/definitions/models.Picture'
+        type: array
+      platform_cpu:
+        type: string
+      platform_gpu:
+        type: string
+      platform_os:
+        type: string
+      reviews:
+        items:
+          $ref: '#/definitions/models.Review'
+        type: array
+      selfcam_features:
+        type: string
+      selfcam_single:
+        type: string
+      selfcam_video:
+        type: string
+      sound_jack:
+        type: string
+      sound_loudspeaker:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.Picture:
+    properties:
+      UrlPicture:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      phoneID:
+        type: integer
+      title:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.Review:
+    properties:
+      content:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      phoneID:
+        type: integer
+      picture:
+        type: string
+      title:
+        type: string
+      updated_at:
+        type: string
+      userID:
+        type: integer
+    type: object
+  models.Role:
+    properties:
+      can_write:
+        type: boolean
+      created_at:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updated_at:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /brands:
+    get:
+      description: Get a list of Brand.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Brand'
+            type: array
+      summary: Get all Brand.
+      tags:
+      - Brand
+    post:
+      description: Creating a new Brand.
+      parameters:
+      - description: the body to create a new Brand
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.brandInput'
+      - description: 'Authorization. How to input in swagger: ''Bearer <insert_your_token_here>'''
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Brand'
+      security:
+      - BearerToken: []
+      summary: Create New Brand.
+      tags:
+      - Brand
+  /brands/{id}:
+    delete:
+      description: Delete a Brand by id.
+      parameters:
+      - description: Brand id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: 'Authorization. How to input in swagger: ''Bearer <insert_your_token_here>'''
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: boolean
+            type: object
+      security:
+      - BearerToken: []
+      summary: Delete one Brand.
+      tags:
+      - Brand
+    patch:
+      description: Update Brand by id.
+      parameters:
+      - description: Brand id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: the body to update brand
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.brandInput'
+      - description: 'Authorization. How to input in swagger: ''Bearer <insert_your_token_here>'''
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Brand'
+      security:
+      - BearerToken: []
+      summary: Update Brand.
+      tags:
+      - Brand
+  /changepassword:
+    post:
+      description: change user's password.
+      parameters:
+      - description: the body to change password
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.ChangePasswordInput'
+      - description: 'Authorization. How to input in swagger: ''Bearer <insert_your_token_here>'''
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+      security:
+      - BearerToken: []
+      summary: Change user's password.
+      tags:
+      - Auth
+  /login:
+    post:
+      description: Logging in to get jwt token to access admin or user api by roles.
+      parameters:
+      - description: the body to login a user
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.LoginInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Login as as user.
+      tags:
+      - Auth
+  /phones:
+    get:
+      description: Get a list of Phone.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Phone'
+            type: array
+      summary: Get all Phone.
+      tags:
+      - Phone
+    post:
+      description: Creating a new Phone.
+      parameters:
+      - description: the body to create a new Phone
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.phoneInput'
+      - description: 'Authorization. How to input in swagger: ''Bearer <insert_your_token_here>'''
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Phone'
+      security:
+      - BearerToken: []
+      summary: Create New Phone.
+      tags:
+      - Phone
+  /phones/{id}:
+    delete:
+      description: Delete a Phone by id.
+      parameters:
+      - description: Phone id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: 'Authorization. How to input in swagger: ''Bearer <insert_your_token_here>'''
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: boolean
+            type: object
+      security:
+      - BearerToken: []
+      summary: Delete one Phone.
+      tags:
+      - Phone
+    get:
+      description: Get detail of Phone.
+      parameters:
+      - description: ID Phone
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Phone'
+      summary: Get Detail Phone.
+      tags:
+      - Phone
+    patch:
+      description: Update Phone by id.
+      parameters:
+      - description: Phone id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: the body to update age rating category
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.phoneInput'
+      - description: 'Authorization. How to input in swagger: ''Bearer <insert_your_token_here>'''
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Phone'
+      security:
+      - BearerToken: []
+      summary: Update Phone.
+      tags:
+      - Phone
+  /phones/bybrand/{id}:
+    get:
+      description: Get a list of Phone By Brand id.
+      parameters:
+      - description: Brand id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Phone'
+            type: array
+      summary: Get all Phone By Brand id.
+      tags:
+      - Phone
+  /phones/fav:
+    get:
+      description: Get a list of Phone.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Phone'
+            type: array
+      summary: Get list Phone order by favourite, by how many hits.
+      tags:
+      - Phone
+  /phones/search/{keyword}:
+    get:
+      description: Get a list of Phone By Name.
+      parameters:
+      - description: Keyword
+        in: path
+        name: keyword
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Phone'
+            type: array
+      summary: Get all Phone By Name.
+      tags:
+      - Phone
+  /pictures:
+    get:
+      description: Get a list of Picture.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Picture'
+            type: array
+      summary: Get all Picture.
+      tags:
+      - Picture
+    post:
+      description: Creating a new Picture.
+      parameters:
+      - description: the body to create a new Picture
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.pictureInput'
+      - description: 'Authorization. How to input in swagger: ''Bearer <insert_your_token_here>'''
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Picture'
+      security:
+      - BearerToken: []
+      summary: Create New Picture.
+      tags:
+      - Picture
+  /pictures/{id}:
+    delete:
+      description: Delete a Picture by id.
+      parameters:
+      - description: Picture id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: 'Authorization. How to input in swagger: ''Bearer <insert_your_token_here>'''
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: boolean
+            type: object
+      security:
+      - BearerToken: []
+      summary: Delete one Picture.
+      tags:
+      - Picture
+    patch:
+      description: Update Picture by id.
+      parameters:
+      - description: Picture id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: the body to update picture
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.pictureInput'
+      - description: 'Authorization. How to input in swagger: ''Bearer <insert_your_token_here>'''
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Picture'
+      security:
+      - BearerToken: []
+      summary: Update Picture.
+      tags:
+      - Picture
+  /pictures/byphone/{id}:
+    get:
+      description: Get a list of By Phone ID.
+      parameters:
+      - description: Phone id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Picture'
+            type: array
+      summary: Get all Picture By Phone ID.
+      tags:
+      - Picture
+  /register:
+    post:
+      description: registering a user from public access.
+      parameters:
+      - description: the body to register a user
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.RegisterInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Register a user.
+      tags:
+      - Auth
+  /reviews:
+    get:
+      description: Get a list of Review.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Review'
+            type: array
+      summary: Get all Review.
+      tags:
+      - Review
+    post:
+      description: Creating a new Review.
+      parameters:
+      - description: the body to create a new Review
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.reviewInput'
+      - description: 'Authorization. How to input in swagger: ''Bearer <insert_your_token_here>'''
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Review'
+      security:
+      - BearerToken: []
+      summary: Create New Review.
+      tags:
+      - Review
+  /reviews/{id}:
+    delete:
+      description: Delete a Review by id.
+      parameters:
+      - description: Review id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: 'Authorization. How to input in swagger: ''Bearer <insert_your_token_here>'''
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: boolean
+            type: object
+      security:
+      - BearerToken: []
+      summary: Delete one Review.
+      tags:
+      - Review
+  /reviews/byphone/{id}:
+    get:
+      description: Get a list of By Phone ID.
+      parameters:
+      - description: Phone id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Review'
+            type: array
+      summary: Get all Review By Phone ID.
+      tags:
+      - Review
+  /roles:
+    get:
+      description: Get a list of Role.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Role'
+            type: array
+      summary: Get all Role.
+      tags:
+      - Role
+    post:
+      description: Creating a new Role.
+      parameters:
+      - description: the body to create a new Role
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.roleInput'
+      - description: 'Authorization. How to input in swagger: ''Bearer <insert_your_token_here>'''
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Role'
+      security:
+      - BearerToken: []
+      summary: Create New Role.
+      tags:
+      - Role
+  /roles/{id}:
+    delete:
+      description: Delete a Role by id.
+      parameters:
+      - description: Role id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: 'Authorization. How to input in swagger: ''Bearer <insert_your_token_here>'''
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: boolean
+            type: object
+      security:
+      - BearerToken: []
+      summary: Delete one Role.
+      tags:
+      - Role
+    patch:
+      description: Update Role by id.
+      parameters:
+      - description: Role id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: the body to update role
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.roleInput'
+      - description: 'Authorization. How to input in swagger: ''Bearer <insert_your_token_here>'''
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Role'
+      security:
+      - BearerToken: []
+      summary: Update Role.
+      tags:
+      - Role
+swagger: "2.0"
